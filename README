@@ -1,1 +1,8 @@
 This is a code written in arduino to make to update the Wumpus robots in the RPI cognitive science department
+Features:
+Control LCD (DONE)
+Speaker Buzzer (WORKING)
+2 variable speed motors + break
+IR input
+Pot input
+
