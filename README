@@ -6,3 +6,88 @@ Speaker Buzzer (WORKING)
 IR input
 Pot input
 
+
+I. initilizing the Arduino Enviroment
+II. Using Wumpus Arduino Redux
+III. Printing to the LCD
+VI. Controling the Motor
+  a. forwards
+  b. backwards
+  c. break
+V. Controling the Buzzer
+IV. getting input from the pot
+IIV. geting input from the IR sensor
+
+
+
+I. Initilizing the Arduino Enviroment
+-------------------------------------
+  To initilize the arduino inviroment you use different sintax then with normal c++
+instead of having a int main() you have two funcitons
+  void setup() {}  and  void loop() {}
+the setup function is run once when your chip is plugged in or reset
+  The loop function continues to loop over and over. If you are having trouble understanding
+because it is different from regular code it is as if you wrote the program like this
+int main() {
+  // setup functions here
+  while (true) {
+    // loop functions here
+  }
+}
+
+
+
+II. Using Wumpus Arduino Redux
+------------------------------
+  After you have configured the arduno invroment you need to include 'wumpus.h'
+#include "wumpus.h" and make sure that the headder file is in the same directory
+that you are saving your program in
+  If you are using the wumpus arduino boards everything should be plugged in the right
+places allready, but if you are creating your own robot or dont have the board
+make sure that all the pins are connected the same way that they are in the circut
+diagram.
+  In your void setup() function run the function configure() this will setup all the
+pins correctly such that the other functions will work.
+
+NOTE: this function also configures serial output at 9600 BAUD if you want to change
+this value just use '#define CHANGEBAUD ###' where ### is the baud rate you want to use
+
+NOTE: For debugging purposes you can '#define ENABLEERROR' which will print a serial
+message each time a function is used in a way that it may not be intended
+
+
+
+III. Printing to the LCD
+------------------------
+  In the wumpus code to send a message to the LCD you use the function LCDMessage()
+the function can accept eaither a character array (string) or an intiger and display
+it to the screen. Examples:
+  LCDMessage("Hello world");
+  LCDMessage(20);
+  int number = 30;
+  LCDMessage(number);
+
+  The wumpus code utilizes the LCD like an output terminal. For Example if i 
+send a message to the LCD the says 'hello world' then the LCD would look like
+  +----------------+
+  |                |
+  |hello world     |
+  +----------------+
+then if i send another message that said 'program running' the lcd woud look like
+  +----------------+
+  |hello world     |
+  |program running |
+  +----------------+
+if the next like is a number, for example '1337' then the lcd would shift everything
+up and put the number at the bottom
+  +----------------+
+  |program running |
+  |20              |
+  +----------------+
+if i try to send it a message that is more then 16 characters long the LCD will cut
+the extra characters off, so if i send "Hello world how are you today" everything
+after 'how' will be cut off becuase the 16th character is the space after the 'how'
+  +----------------+
+  |20              |
+  |Hello world how |
+  +----------------+

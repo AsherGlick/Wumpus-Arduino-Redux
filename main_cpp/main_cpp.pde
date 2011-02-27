@@ -107,13 +107,13 @@ void loop() {
   buzzer(0);
   LCDMessage("hello world");
   delay(500);
-  LCDMessage("nope");
+  LCDMessage("nope5678901234567");
   delay(200);
   buzzer(1337);
 }
 
 
-/* Tetris *\
+/********* Tetris *********\
 | This function palys tetris on the piazo speaker. The #defines are used to represent the freequency
 | of different pitches. The Melody array stores the different notes while the beats array stores the
 | tempo for each note. These can be changed to have the speaker play different songs
