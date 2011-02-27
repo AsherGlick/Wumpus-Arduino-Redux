@@ -95,3 +95,8 @@ after 'how' will be cut off becuase the 16th character is the space after the 'h
 VI. Controling the motor
 ------------------------
 There is currently no motor control script
+
+V. Controling the Buzzer
+------------------------
+  To buzz the buzzer you run the buzzer function with the freequency you want the 
+buzzer to ring at
