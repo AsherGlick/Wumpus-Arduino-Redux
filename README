@@ -91,3 +91,7 @@ after 'how' will be cut off becuase the 16th character is the space after the 'h
   |20              |
   |Hello world how |
   +----------------+
+  
+VI. Controling the motor
+------------------------
+There is currently no motor control script
