@@ -1,5 +1,5 @@
-#include <LiquidCrystal.h>
 #include "wumpus.h"
+#include <LiquidCrystal.h>
 /*
 LCD Pins                 | Arduino Pins
 1  GND                   | GND
@@ -20,9 +20,6 @@ LCD Pins                 | Arduino Pins
 16 BL- (backlight gnd)   | NOT USED
 */
 
-
-
-void tetris();
 
 /*
   #define ENABLEERROR // enables error messages over serial

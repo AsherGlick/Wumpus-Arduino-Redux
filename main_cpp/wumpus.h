@@ -1,9 +1,29 @@
+
 /* wumpus.h, intended for the RPI wumpus robots */
 
+#include "WProgram.h" // needed for external files
+
 // initialize the library with the numbers of the interface pins
-LiquidCrystal lcd(13, 12,8 , 7, 4, 2);
+//LiquidCrystal lcd(13, 12,8 , 7, 4, 2);
 
 #define PIAZO_PIN 9
+
+
+void wumpusSetup();
+void LCDMessage (char message[16]);
+void buzzer (int pitch);
+bool lightSensor (int lightSensor);
+int waitForIR ();
+void runMotor (int motorNumber, int speedAndDirection);
+
+
+
+
+// initialize the library with the numbers of the interface pins
+#include <LiquidCrystal.h>
+LiquidCrystal lcd(13, 12,8 , 7, 4, 2);
+
+//#define PIAZO_PIN 9
 
 /******************************* Wumpuse Setup *******************************\
 | The wumpus setup function sets up the output and the input this function    |
@@ -183,7 +203,7 @@ bool lightSensor (int lightSensor) {
 |   SWARMMODE                                                                  |
 \******************************************************************************/
 int waitForIR () {
-  #ifnfed SWARMMODE
+  #ifndef SWARMMODE
   #endif
   #ifdef SWARMMODE
   #endif
