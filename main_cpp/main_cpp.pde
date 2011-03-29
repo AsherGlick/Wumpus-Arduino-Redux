@@ -20,10 +20,7 @@ LCD Pins                 | Arduino Pins
 16 BL- (backlight gnd)   | NOT USED
 */
 
-// initialize the library with the numbers of the interface pins
-LiquidCrystal lcd(13, 12,8 , 7, 4, 2);
 
-#define PIAZO_PIN 9
 
 void tetris();
 
@@ -31,35 +28,7 @@ void tetris();
   #define ENABLEERROR // enables error messages over serial
   #define CHANGEBAUD ### // changes the set baud rate to number instead of default 9600
 */
-char storedmessagec[16];
-int storedmessagei;
-bool intlast;
-void LCDMessage (char message[16]) {
-  lcd.clear();
-  lcd.setCursor(0,0);
-  if (intlast)
-    lcd.print (storedmessagei);
-  else
-    lcd.print (storedmessagec);
-  for (int i = 0; i < 16; i++) {
-    storedmessagec[i] = message[i];
-  }
-  lcd.setCursor(0,1);
-  lcd.print (message);
-  intlast = false;
-}
-void LCDMessage (int message) {
-  lcd.clear();
-  lcd.setCursor(0,0);
-  if (intlast)
-    lcd.print (storedmessagei);
-  else
-    lcd.print (storedmessagec);
-  storedmessagei = message;
-  lcd.setCursor(0,1);
-  lcd.print (message);
-  intlast = true;
-}
+
 
 
 
