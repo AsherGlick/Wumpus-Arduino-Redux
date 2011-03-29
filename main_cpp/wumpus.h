@@ -140,3 +140,34 @@ void tetris() {
     delayMicroseconds(pause);
   }
 }
+
+/* Light Sensor *\
+| This is the light sensor function, it uses a standard threshold value for
+| weather a line is white or black
+|  THRESHOLD IS NOT CALIBRATED AT THIS MOMENT
+\******************************************************************************/
+// #define NEWLIGHTTHRESHOLD
+bool lightSensor (int lightSensor) {
+  if (lightSensor == 1 || lightSensor == 2) {
+    #ifndef NEWLIGHTTHRESHOLD
+    if (analogRead(lightSensor) > 512) {
+      return (true);
+    }
+    #endif
+    #ifdef NEWLIGHTTHRESHOLD
+    if (analogRead(lightSensor) > NEWLIGHTTHRESHOLD) {
+      return (true);
+    }
+    #endif
+    else {
+      return (false);
+    }
+  }
+}
+
+/* IR Input *\
+\*/
+
+/*\
+|motor
+\*/

@@ -32,9 +32,7 @@ void tetris();
 
 
 
-/*\
-|motor
-\*/
+
 
 
 // MAIN //
