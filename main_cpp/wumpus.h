@@ -28,7 +28,11 @@ void wumpusSetup() {
   #endif
 }
 /********************************* LCD Display *********************************\
-| Display a message to the LCD screen
+| Display a message to the LCD screen. You can write numbers or 16 character    |
+| strings to the LCD. The function saves the last displayed message and puts it |
+| on the top row while the newly inputed line is placed on the bottom row to    |
+| emulate a terminal window. To use the function you call LCDMessage()          |
+| For examples on how to use it in code read the documentation page             |
 \*******************************************************************************/
 char storedmessagec[16];
 int storedmessagei;
@@ -60,7 +64,9 @@ void LCDMessage (int message) {
   intlast = true;
 }
 /*********************************** Buzzer ***********************************\
-| Needs to be able to do pitch so it can play tetris as bonus feature          |
+| The Buzzer function resonates the buzzer at a specific freequencee. There is |
+| a way to get the buzzer to play tetris soundtrack if you type in the number  |
+| 1337 into the pitch.                                                         |
 \******************************************************************************/
 void buzzer (int pitch){
   if (pitch == 1337) {
@@ -76,9 +82,11 @@ void buzzer (int pitch){
 | different notes while the beats array stores the tempo for each note. These  |
 | can be changed to have the speaker play different songs                      |
 \******************************************************************************/
-#define  G     4820
-#define  a     4600
-#define  b     4200
+// 1000000/value = herz
+//      note   value      herz
+#define  G     4820    // 207 Hz
+#define  a     4600    // 217 Hz
+#define  b     4200    // 238 Hz
 #define  c     3830    // 261 Hz
 #define  d     3400    // 294 Hz 
 #define  e     3038    // 329 Hz 
@@ -86,8 +94,9 @@ void buzzer (int pitch){
 #define  g     2550    // 392 Hz 
 #define  A     2272    // 440 Hz 
 #define  B     2028    // 493 Hz 
-#define  C     2000    // 523 Hz 
-#define  R     0       // A special note, 'R', to represent a rest
+#define  C     2000    // 500 Hz 
+#define  R     0       // Rest
+
 void tetris() {
 // MELODY and TIMING  =======================================
 //  melody[] is an array of notes, accompanied by beats[], 
@@ -141,10 +150,12 @@ void tetris() {
   }
 }
 
-/* Light Sensor *\
-| This is the light sensor function, it uses a standard threshold value for
-| weather a line is white or black
-|  THRESHOLD IS NOT CALIBRATED AT THIS MOMENT
+/******************************** Light Sensor ********************************\
+| This is the light sensor function, it uses a standard threshold value for    |
+| weather a line is white or black                                             |
+|  THRESHOLD IS NOT CALIBRATED AT THIS MOMENT                                  |
+| #defines used:                                                               |
+|   NEWLIGHTTHRESHOLD                                                          |
 \******************************************************************************/
 // #define NEWLIGHTTHRESHOLD
 bool lightSensor (int lightSensor) {
@@ -165,9 +176,23 @@ bool lightSensor (int lightSensor) {
   }
 }
 
-/* IR Input *\
-\*/
+/********************************** IR Input **********************************\
+| The wait for IR function waits for an IR signal from the remote, this        |
+| This function is                                                             |
+| #defines used:                                                               |
+|   SWARMMODE                                                                  |
+\******************************************************************************/
+int waitForIR () {
+  #ifnfed SWARMMODE
+  #endif
+  #ifdef SWARMMODE
+  #endif
+  return 0
+}
 
-/*\
-|motor
-\*/
+/* Motor *\
+| This function makes 
+\******************************************************************************/
+void runMotor (int motorNumber, int speedAndDirection) {
+    
+}
