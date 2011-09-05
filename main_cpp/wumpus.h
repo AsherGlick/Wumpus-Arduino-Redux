@@ -2,6 +2,7 @@
 /* wumpus.h, intended for the RPI wumpus robots */
 
 #include "WProgram.h" // needed for external files
+#include <LiquidCrystal.h>
 
 // initialize the library with the numbers of the interface pins
 //LiquidCrystal lcd(13, 12,8 , 7, 4, 2);
@@ -15,13 +16,14 @@ void buzzer (int pitch);
 bool lightSensor (int lightSensor);
 int waitForIR ();
 void runMotor (int motorNumber, int speedAndDirection);
+void __TETRIS_();
 
 
 
 
 // initialize the library with the numbers of the interface pins
-#include <LiquidCrystal.h>
-LiquidCrystal lcd(13, 12,8 , 7, 4, 2);
+
+LiquidCrystal lcd(2, 4,12 , 7, 8, 13);
 
 //#define PIAZO_PIN 9
 
@@ -90,7 +92,7 @@ void LCDMessage (int message) {
 \******************************************************************************/
 void buzzer (int pitch){
   if (pitch == 1337) {
-    tetris();
+    __TETRIS_();
     return;
   }
   if (pitch > 255 || pitch < 0) pitch = 0;
@@ -117,7 +119,7 @@ void buzzer (int pitch){
 #define  C     2000    // 500 Hz 
 #define  R     0       // Rest
 
-void tetris() {
+void __TETRIS_() {
 // MELODY and TIMING  =======================================
 //  melody[] is an array of notes, accompanied by beats[], 
 //  which sets each note's relative length (higher #, longer note                                                                                                                                                                                                                           !
@@ -198,7 +200,7 @@ bool lightSensor (int lightSensor) {
 
 /********************************** IR Input **********************************\
 | The wait for IR function waits for an IR signal from the remote, this        |
-| This function is                                                             |
+| This function is not implemented do not screem, nobody will hear you anyways |
 | #defines used:                                                               |
 |   SWARMMODE                                                                  |
 \******************************************************************************/
@@ -207,12 +209,12 @@ int waitForIR () {
   #endif
   #ifdef SWARMMODE
   #endif
-  return 0
+  return 0;
 }
 
-/* Motor *\
+/*********************************** Motor ***********************************\
 | This function makes 
-\******************************************************************************/
+\*****************************************************************************/
 void runMotor (int motorNumber, int speedAndDirection) {
     
 }

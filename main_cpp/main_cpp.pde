@@ -59,6 +59,3 @@ void loop() {
   Serial.print(analogRead(0));
 }
 // END MAIN //
-
-
-d
